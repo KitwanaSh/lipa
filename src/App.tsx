@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import ErrorBoundary from './components/ErrorBoundary';
+import Navigation from './components/Navigation';
+import Routes from './routes/Routes';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <div className="min-h-screen">
+          <Navigation />
+          <div className="pt-16"> {/* Add padding top to account for fixed navbar */}
+            <Routes />
+          </div>
+        </div>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }
 
